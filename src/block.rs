@@ -1,11 +1,7 @@
 use std::fmt::{ self, Debug, Formatter };
 use super::*;
 extern crate fuse; 
-use fuse::Filesystem; 
-use std::os; 
-use libc::{ENOENT, ENOSYS}; 
-use fuse::{FileAttr, FileType,Request,ReplyAttr,ReplyData,ReplyEntry,ReplyDirectory}; //passes to the gen block here ^^
-// calls each file being read 
+use std::fs::*;
 
 pub struct Block {
     pub index: u32,
@@ -33,6 +29,7 @@ impl Block {
             index,
             timestamp,
             hash: vec![0; 32],
+            
             prev_block_hash,
             nonce,
             payload,
