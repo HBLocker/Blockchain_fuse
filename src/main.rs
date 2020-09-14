@@ -4,7 +4,7 @@ use std::path::Path;
 use fuse::Filesystem;
 use std::env::args;
 struct NullFS;
-impl Filesystem for NullFS {
+impl Filesystem for NullFS { //calls fuse file system type 
 }
 
 
@@ -12,17 +12,17 @@ impl Filesystem for NullFS {
 
 fn main () {
     
-    let mountpoint = match env::args().as_slice()
+    let mountpoint = match env::args().as_slice() //debugging creates a mount point for the part of the file system
     {
-        [,ref path] => Path::new(path),
+        [,ref path] => Path::new(path), //pushes to path 
         => {
-            println!("Usage:{} <Mount_Point>"env::args()[0]);
+            println!("Usage:{} <Mount_Point>"env::args()[0]); //prints mountd system (DOES NOT WORK YET)
             return; 
         }
     }
 
     
-
+//block functions beiing called
 
     let mut i = 0;
     while i < 3{
