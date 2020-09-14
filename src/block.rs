@@ -2,10 +2,10 @@ use std::fmt::{ self, Debug, Formatter };
 use super::*;
 extern crate fuse; 
 use std::fs::*;
-
+//struct fot eh main block 
 pub struct Block {
-    pub index: u32,
-    pub timestamp: u128,
+    pub index: u32, //types of data uses for the block
+    pub timestamp: u128, //time is sued for current block
     pub hash: BlockHash,
     pub prev_block_hash: BlockHash,
     pub nonce: u64,
@@ -23,7 +23,7 @@ impl Debug for Block {
     }
 }
 
-impl Block {
+impl Block { //create block function 
     pub fn new (index: u32, timestamp: u128, prev_block_hash: BlockHash, nonce: u64, payload: String) -> Self {
         Block {
             index,
